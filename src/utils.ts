@@ -3,7 +3,7 @@ export const setLocalStorage = (key: string, value: string) => localStorage.setI
 export const getLocalStorage = (key: string) => localStorage.getItem(key) || "";
 
 export const isStringValid = (str: string) => {
-  const regex = /^[^A-Z0-9a-z]/;
+  const regex = /^$/;
 
   return !regex.test(str);
 }
