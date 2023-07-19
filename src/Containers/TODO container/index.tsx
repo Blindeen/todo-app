@@ -51,11 +51,9 @@ const TODOContainer = () => {
     updatedList.sort((a, b) => {
       if (a.isDone > b.isDone) {
         return 1;
-      }
-      else if (a.isDone < b.isDone) {
+      } else if (a.isDone < b.isDone) {
         return -1;
-      }
-      else {
+      } else {
         return 0;
       }
     });
@@ -83,6 +81,11 @@ const TODOContainer = () => {
             rows={1}
             maxLength={20}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setLocalStorage("header", e.target.value)}
+            onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
             defaultValue={getLocalStorage("header")}
           />
           <TaskListArea>
