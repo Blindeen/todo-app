@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 import palette from "../../palette";
 
+interface TaskProps {
+  decoration: string;
+}
+
 export const BackgroundContainer = styled("div")`
   height: 100vh;
   width: 100vw;
@@ -39,6 +43,7 @@ export const RightAreaDiv = styled("div")`
   flex-direction: column;
   flex: 1;
   height: 100%;
+  gap: 20px;
 `;
 
 export const Circle = styled("span")`
@@ -64,7 +69,7 @@ export const HeaderArea = styled("textarea")`
   font-weight: bold;
 `;
 
-export const TaskArea = styled("textarea")`
+export const StyledInput = styled("input")`
   resize: none;
   height: fit-content;
   width: fit-content;
@@ -72,7 +77,21 @@ export const TaskArea = styled("textarea")`
   border: none;
   border-bottom: solid 1px;
   outline: none;
-  margin-top: 20px;
 
   text-align: center;
+  font-size: 16px;
+`;
+
+export const TaskListArea = styled("div")`
+  width: 80%;
+  
+  overflow-y: auto;
+`;
+
+export const Task = styled("div")<TaskProps>`
+  width: fit-content;
+  cursor: pointer;
+  
+  overflow-wrap: anywhere;
+  text-decoration: ${(props) => props.decoration};
 `;
