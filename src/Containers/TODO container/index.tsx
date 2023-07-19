@@ -9,19 +9,16 @@ import {
   HeaderArea,
   StyledInput, TaskListArea, Task
 } from "./styles";
-import {setLocalStorage, getLocalStorage, isStringValid} from "../../utils";
-
-interface TaskInterface {
-  name: string,
-  isDone: boolean,
-}
+import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid, compareTasks} from "../../utils";
 
 const TODOContainer = () => {
-  const tasksStorage = JSON.parse(localStorage.getItem("tasks") || "");
+  const tasksStorage = JSON.parse(getLocalStorage("tasks"));
   const [inputValue, setInputValue] = useState("");
-  const [taskList, setTaskList] = useState<TaskInterface[]>(tasksStorage ? tasksStorage : []);
+  const [taskList, setTaskList] = useState<TaskInterface[]>(
+    tasksStorage ? tasksStorage : []
+  );
 
-  useEffect(() => localStorage.setItem("tasks", JSON.stringify(taskList)), [taskList]);
+  useEffect(() => setLocalStorage("tasks", JSON.stringify(taskList)), [taskList]);
 
   const onInputChange = (e: React.FormEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value);
 
@@ -46,17 +43,9 @@ const TODOContainer = () => {
 
   const toggleIsDone = (idx: number) => {
     const updatedList = [...taskList];
-    updatedList[idx].isDone = !updatedList[idx].isDone;
 
-    updatedList.sort((a, b) => {
-      if (a.isDone > b.isDone) {
-        return 1;
-      } else if (a.isDone < b.isDone) {
-        return -1;
-      } else {
-        return 0;
-      }
-    });
+    updatedList[idx].isDone = !updatedList[idx].isDone;
+    updatedList.sort(compareTasks);
 
     setTaskList(updatedList);
   }
