@@ -34,7 +34,7 @@ const TODOContainer = () => {
     }
 
     const newValue: TaskInterface = {
-      name: trimmedValue,
+      description: trimmedValue,
       isDone: false,
     };
     setTaskList([...taskList, newValue]);
@@ -54,7 +54,7 @@ const TODOContainer = () => {
 
   const taskSet = taskList.map((task, idx) => (
     <Task key={idx} onClick={toggleIsDone.bind(null, idx)} decoration={task.isDone ? "line-through" : "none"}>
-      {task.name}
+      {task.description}
     </Task>
   ));
 
@@ -72,11 +72,7 @@ const TODOContainer = () => {
             rows={1}
             maxLength={20}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setLocalStorage("header", e.target.value)}
-            onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-              if (e.key === "Enter") {
-                e.preventDefault();
-              }
-            }}
+            onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => (e.key === "Enter") && e.preventDefault()}
             defaultValue={getLocalStorage("header")}
           />
           <TaskListArea>

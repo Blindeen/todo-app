@@ -63,6 +63,7 @@ export const HeaderArea = styled("textarea")`
   border-bottom: solid 1px;
   outline: none;
   margin-top: 20px;
+  overflow-y: hidden;
   
   text-align: center;
   font-size: 20px;
@@ -77,6 +78,7 @@ export const StyledInput = styled("input")`
   border: none;
   border-bottom: solid 1px;
   outline: none;
+  margin-bottom: 20px;
 
   text-align: center;
   font-size: 16px;
@@ -84,6 +86,7 @@ export const StyledInput = styled("input")`
 
 export const TaskListArea = styled("div")`
   width: 80%;
+  height: 80%;
   
   overflow-y: auto;
 `;
