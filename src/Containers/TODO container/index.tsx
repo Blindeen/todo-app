@@ -12,15 +12,17 @@ import {
 import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid, compareTasks} from "../../utils";
 
 const TODOContainer = () => {
-  const tasksStorage = JSON.parse(getLocalStorage("tasks"));
+  const tasksStorage = getLocalStorage("tasks");
+  const tasksArray = tasksStorage ? JSON.parse(tasksStorage) : null;
+
   const [inputValue, setInputValue] = useState("");
   const [taskList, setTaskList] = useState<TaskInterface[]>(
-    tasksStorage ? tasksStorage : []
+    tasksArray ? tasksArray : []
   );
 
   useEffect(() => setLocalStorage("tasks", JSON.stringify(taskList)), [taskList]);
 
-  const onInputChange = (e: React.FormEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value);
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -81,7 +83,7 @@ const TODOContainer = () => {
             {taskSet}
           </TaskListArea>
           <form onSubmit={onFormSubmit}>
-            <StyledInput title="task-input" name="task" type="text" onChange={onInputChange}/>
+            <StyledInput title="task-input" name="task" type="text" onKeyDown={onKeyDown}/>
           </form>
         </RightAreaDiv>
       </NotebookArea>
