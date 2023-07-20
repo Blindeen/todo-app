@@ -13,12 +13,4 @@ export const isStringValid = (str: string) => {
   return !regex.test(str);
 }
 
-export const compareTasks = (a: TaskInterface, b: TaskInterface) => {
-  if (a.isDone > b.isDone) {
-    return 1;
-  } else if (a.isDone < b.isDone) {
-    return -1;
-  } else {
-    return 0;
-  }
-}
+export const compareTasks = (a: TaskInterface, b: TaskInterface) => Number(a.isDone) - Number(b.isDone)
