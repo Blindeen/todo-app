@@ -22,8 +22,6 @@ const TODOContainer = () => {
 
   useEffect(() => setLocalStorage("tasks", JSON.stringify(taskList)), [taskList]);
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value);
-
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -53,7 +51,11 @@ const TODOContainer = () => {
   }
 
   const taskSet = taskList.map((task, idx) => (
-    <Task key={idx} onClick={toggleIsDone.bind(null, idx)} decoration={task.isDone ? "line-through" : "none"}>
+    <Task
+      key={idx}
+      onClick={toggleIsDone.bind(null, idx)}
+      decoration={task.isDone ? "line-through" : "none"}
+    >
       {task.description}
     </Task>
   ));
@@ -79,7 +81,11 @@ const TODOContainer = () => {
             {taskSet}
           </TaskListArea>
           <form onSubmit={onFormSubmit}>
-            <StyledInput title="task-input" name="task" type="text" onKeyDown={onKeyDown}/>
+            <StyledInput
+              title="task-input"
+              type="text"
+              placeholder="Enter task"
+              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)}/>
           </form>
         </RightAreaDiv>
       </NotebookArea>
