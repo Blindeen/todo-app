@@ -68,6 +68,7 @@ export const HeaderArea = styled("textarea")`
   text-align: center;
   font-size: 20px;
   font-weight: bold;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 `;
 
 export const StyledInput = styled("input")`
@@ -82,6 +83,7 @@ export const StyledInput = styled("input")`
 
   text-align: center;
   font-size: 16px;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 `;
 
 export const TaskListArea = styled("div")`
@@ -89,10 +91,25 @@ export const TaskListArea = styled("div")`
   height: 80%;
   
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 20px;
+  }
+
+  font-family: Comic Sans MS, Comic Sans, cursive;
 `;
 
 export const Task = styled("div")<TaskProps>`
-  width: fit-content;
+  width: 100%;
+  border-bottom: solid 1px;
   cursor: pointer;
   
   overflow-wrap: anywhere;
