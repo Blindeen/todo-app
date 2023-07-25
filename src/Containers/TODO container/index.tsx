@@ -12,17 +12,17 @@ import {
 import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid, compareTasks} from "../../utils";
 
 const TODOContainer = () => {
-  const tasksStorage = getLocalStorage("tasks");
-  const tasksArray = tasksStorage ? JSON.parse(tasksStorage) : null;
+  const taskStorage = getLocalStorage("tasks");
+  const taskArray = taskStorage ? JSON.parse(taskStorage) : null;
 
   const [inputValue, setInputValue] = useState("");
   const [taskList, setTaskList] = useState<TaskInterface[]>(
-    tasksArray ? tasksArray : []
+    taskArray ? taskArray : []
   );
 
   useEffect(() => setLocalStorage("tasks", JSON.stringify(taskList)), [taskList]);
 
-  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const trimmedValue = inputValue.trim();
@@ -82,7 +82,7 @@ const TODOContainer = () => {
             {taskSet}
           </TaskListArea>
           <InputDiv>
-            <form onSubmit={onFormSubmit}>
+            <form onSubmit={onSubmit}>
               <StyledInput
                 title="task-input"
                 type="text"

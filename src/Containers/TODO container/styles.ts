@@ -26,44 +26,42 @@ export const NotebookArea = styled("div")`
 `;
 
 export const LeftAreaDiv = styled("div")`
-  width: 60px;
   height: 100%;
-  
+  width: 60px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  gap: 125px;
+  justify-content: space-around;
+  align-items: center;
   
   border-right: double ${palette.red};
 `;
 
 export const RightAreaDiv = styled("div")`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  flex: 1;
   height: 100%;
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
 `;
 
 export const Circle = styled("span")`
   height: 25px;
   width: 25px;
+  display: inline-block;
+
   background-color: ${palette.hotelSoleiImlil};
   border-radius: 50%;
-  display: inline-block;
 `;
 
 export const HeaderArea = styled("textarea")`
-  resize: none;
   height: fit-content;
   width: fit-content;
+  resize: none;
   background: none;
   border: none;
   border-bottom: solid 1px;
   outline: none;
-  margin-top: 20px;
   overflow-y: hidden;
   
   text-align: center;
@@ -77,14 +75,12 @@ export const InputDiv = styled("div")`
   display: flex;
   justify-content: space-evenly;
   align-items: end;
-  
-  margin-bottom: 20px;
 `;
 
 export const StyledInput = styled("input")`
-  resize: none;
   height: fit-content;
   width: fit-content;
+  resize: none;
   background: none;
   border: none;
   border-bottom: solid 1px;
@@ -96,8 +92,8 @@ export const StyledInput = styled("input")`
 `;
 
 export const TaskListArea = styled("div")`
-  width: 80%;
   height: 80%;
+  width: 80%;
   
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -119,8 +115,8 @@ export const TaskListArea = styled("div")`
 export const Task = styled("div")<TaskProps>`
   width: 100%;
   border-bottom: solid 1px;
+
   cursor: pointer;
-  
   overflow-wrap: anywhere;
   text-decoration: ${(props) => props.decoration};
 `;
@@ -131,6 +127,6 @@ export const StyledDeleteIcon = styled(DeleteFilled)`
   transition: 0.3s;
   &:hover {
     color: ${palette.red};
-    font-size: 30px;
+    font-size: 25px;
   }
 `;
