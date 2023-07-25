@@ -76,6 +76,7 @@ const TODOContainer = () => {
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setLocalStorage("header", e.target.value)}
             onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => (e.key === "Enter") && e.preventDefault()}
             defaultValue={getLocalStorage("header")}
+            spellCheck={false}
           />
           <TaskListArea>
             {taskSet}
@@ -87,6 +88,7 @@ const TODOContainer = () => {
                 type="text"
                 placeholder="Enter task"
                 onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)}
+                spellCheck={false}
               />
             </form>
             <StyledDeleteIcon
