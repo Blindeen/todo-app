@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {DeleteFilled} from "@ant-design/icons";
 
 import palette from "../../palette";
 
@@ -71,6 +72,15 @@ export const HeaderArea = styled("textarea")`
   font-family: Comic Sans MS, Comic Sans, cursive;
 `;
 
+export const InputDiv = styled("div")`
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: end;
+  
+  margin-bottom: 20px;
+`;
+
 export const StyledInput = styled("input")`
   resize: none;
   height: fit-content;
@@ -79,7 +89,6 @@ export const StyledInput = styled("input")`
   border: none;
   border-bottom: solid 1px;
   outline: none;
-  margin-bottom: 20px;
 
   text-align: center;
   font-size: 16px;
@@ -114,4 +123,14 @@ export const Task = styled("div")<TaskProps>`
   
   overflow-wrap: anywhere;
   text-decoration: ${(props) => props.decoration};
+`;
+
+export const StyledDeleteIcon = styled(DeleteFilled)`
+  font-size: 20px;
+  
+  transition: 0.3s;
+  &:hover {
+    color: ${palette.red};
+    font-size: 30px;
+  }
 `;

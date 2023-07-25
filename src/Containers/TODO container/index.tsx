@@ -7,7 +7,7 @@ import {
   RightAreaDiv,
   Circle,
   HeaderArea,
-  StyledInput, TaskListArea, Task
+  StyledInput, TaskListArea, Task, InputDiv, StyledDeleteIcon
 } from "./styles";
 import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid, compareTasks} from "../../utils";
 
@@ -80,13 +80,19 @@ const TODOContainer = () => {
           <TaskListArea>
             {taskSet}
           </TaskListArea>
-          <form onSubmit={onFormSubmit}>
-            <StyledInput
-              title="task-input"
-              type="text"
-              placeholder="Enter task"
-              onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)}/>
-          </form>
+          <InputDiv>
+            <form onSubmit={onFormSubmit}>
+              <StyledInput
+                title="task-input"
+                type="text"
+                placeholder="Enter task"
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)}
+              />
+            </form>
+            <StyledDeleteIcon
+                onClick={() => window.confirm("Are you sure you want to clear this list?") && setTaskList([])}
+            />
+          </InputDiv>
         </RightAreaDiv>
       </NotebookArea>
     </BackgroundContainer>
