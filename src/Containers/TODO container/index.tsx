@@ -1,14 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-import {
-  BackgroundContainer,
-  LeftAreaDiv,
-  NotebookArea,
-  RightAreaDiv,
-  Circle,
-  HeaderArea,
-  StyledInput, TaskListArea, Task, InputDiv, StyledDeleteIcon
-} from "./styles";
+import * as Components from "./styles";
 import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid, compareTasks} from "../../utils";
 
 const TODOContainer = () => {
@@ -51,25 +43,29 @@ const TODOContainer = () => {
   }
 
   const taskSet = taskList.map((task, idx) => (
-    <Task
+    <Components.Task
       key={idx}
       decoration={task.isDone ? "line-through" : "none"}
     >
       <input type="checkbox" onChange={toggleIsDone.bind(null, idx)} checked={task.isDone}/>
       {task.description}
-    </Task>
+      <Components.StyledPropertiesDiv>
+        <Components.StyledEditTaskIcon/>
+        <Components.StyledDeleteTaskIcon/>
+      </Components.StyledPropertiesDiv>
+    </Components.Task>
   ));
 
   return (
-    <BackgroundContainer>
-      <NotebookArea>
-        <LeftAreaDiv>
-          <Circle/>
-          <Circle/>
-          <Circle/>
-        </LeftAreaDiv>
-        <RightAreaDiv>
-          <HeaderArea
+    <Components.BackgroundContainer>
+      <Components.NotebookArea>
+        <Components.LeftAreaDiv>
+          <Components.Circle/>
+          <Components.Circle/>
+          <Components.Circle/>
+        </Components.LeftAreaDiv>
+        <Components.RightAreaDiv>
+          <Components.HeaderArea
             title="header"
             rows={1}
             maxLength={20}
@@ -78,12 +74,12 @@ const TODOContainer = () => {
             defaultValue={getLocalStorage("header")}
             spellCheck={false}
           />
-          <TaskListArea>
+          <Components.TaskListArea>
             {taskSet}
-          </TaskListArea>
-          <InputDiv>
+          </Components.TaskListArea>
+          <Components.InputDiv>
             <form onSubmit={onSubmit}>
-              <StyledInput
+              <Components.StyledInput
                 title="task-input"
                 type="text"
                 placeholder="Enter task"
@@ -91,13 +87,13 @@ const TODOContainer = () => {
                 spellCheck={false}
               />
             </form>
-            <StyledDeleteIcon
-                onClick={() => window.confirm("Are you sure you want to clear this list?") && setTaskList([])}
+            <Components.StyledDeleteIcon
+              onClick={() => window.confirm("Are you sure you want to clear this list?") && setTaskList([])}
             />
-          </InputDiv>
-        </RightAreaDiv>
-      </NotebookArea>
-    </BackgroundContainer>
+          </Components.InputDiv>
+        </Components.RightAreaDiv>
+      </Components.NotebookArea>
+    </Components.BackgroundContainer>
   );
 };
 

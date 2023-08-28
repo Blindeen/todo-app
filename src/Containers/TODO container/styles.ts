@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {DeleteFilled} from "@ant-design/icons";
+import {DeleteFilled, EditFilled} from "@ant-design/icons";
 
 import palette from "../../palette";
 
@@ -142,4 +142,19 @@ export const StyledDeleteIcon = styled(DeleteFilled)`
     color: ${palette.red};
     font-size: 25px;
   }
+`;
+
+export const StyledPropertiesDiv = styled("div")`
+  display: flex;
+  flex: 1;
+  justify-content: end;
+  gap: 10px;
+`;
+
+export const StyledDeleteTaskIcon = styled(DeleteFilled)`
+  font-size: 20px;
+`;
+
+export const StyledEditTaskIcon = styled(EditFilled)`
+  font-size: 20px;
 `;
