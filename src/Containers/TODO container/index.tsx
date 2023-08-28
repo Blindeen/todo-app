@@ -42,16 +42,35 @@ const TODOContainer = () => {
     setTaskList(updatedList);
   }
 
+  const deleteTask = (idx: number) => {
+    const editedList = [...taskList];
+
+    editedList.splice(idx, 1);
+
+    setTaskList(editedList);
+  }
+
+  const editTask = (idx: number, text: string) => {
+    const editedList = [...taskList];
+
+    const newText = window.prompt("Change description", text);
+    if (newText) {
+      editedList[idx].description = newText;
+      setTaskList(editedList);
+    }
+  }
+
   const taskSet = taskList.map((task, idx) => (
     <Components.Task
       key={idx}
       decoration={task.isDone ? "line-through" : "none"}
     >
-      <input type="checkbox" onChange={toggleIsDone.bind(null, idx)} checked={task.isDone}/>
+      <input type="checkbox" onChange={() => toggleIsDone(idx)} checked={task.isDone}/>
       {task.description}
       <Components.StyledPropertiesDiv>
-        <Components.StyledEditTaskIcon/>
-        <Components.StyledDeleteTaskIcon/>
+        <Components.StyledEditTaskIcon onClick={() => editTask(idx, task.description)}/>
+        <Components.StyledDeleteTaskIcon
+          onClick={() => window.confirm("Do you want to remove this task?") && deleteTask(idx)}/>
       </Components.StyledPropertiesDiv>
     </Components.Task>
   ));
