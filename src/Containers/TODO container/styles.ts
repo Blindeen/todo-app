@@ -113,10 +113,23 @@ export const TaskListArea = styled("div")`
 `;
 
 export const Task = styled("div")<TaskProps>`
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
   width: 100%;
+  display: flex;
+  align-items: end;
   border-bottom: solid 1px;
-
-  cursor: pointer;
+  animation: reveal 1s;
+  
   overflow-wrap: anywhere;
   text-decoration: ${(props) => props.decoration};
 `;

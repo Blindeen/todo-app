@@ -53,9 +53,9 @@ const TODOContainer = () => {
   const taskSet = taskList.map((task, idx) => (
     <Task
       key={idx}
-      onClick={toggleIsDone.bind(null, idx)}
       decoration={task.isDone ? "line-through" : "none"}
     >
+      <input type="checkbox" onChange={toggleIsDone.bind(null, idx)} checked={task.isDone}/>
       {task.description}
     </Task>
   ));
