@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from "react";
 
 import * as Components from "./styles";
-import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid, compareTasks} from "../../utils";
+import {toggleIsDone, editTask, deleteTask} from "./functions";
+import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid} from "../../utils";
 
 const TODOContainer = () => {
   const taskStorage = getLocalStorage("tasks");
@@ -33,44 +34,17 @@ const TODOContainer = () => {
     e.currentTarget.reset();
   }
 
-  const toggleIsDone = (idx: number) => {
-    const updatedList = [...taskList];
-
-    updatedList[idx].isDone = !updatedList[idx].isDone;
-    updatedList.sort(compareTasks);
-
-    setTaskList(updatedList);
-  }
-
-  const deleteTask = (idx: number) => {
-    const editedList = [...taskList];
-
-    editedList.splice(idx, 1);
-
-    setTaskList(editedList);
-  }
-
-  const editTask = (idx: number, text: string) => {
-    const editedList = [...taskList];
-
-    const newText = window.prompt("Change description", text);
-    if (newText) {
-      editedList[idx].description = newText;
-      setTaskList(editedList);
-    }
-  }
-
   const taskSet = taskList.map((task, idx) => (
     <Components.Task
       key={idx}
       decoration={task.isDone ? "line-through" : "none"}
     >
-      <input type="checkbox" onChange={() => toggleIsDone(idx)} checked={task.isDone}/>
+      <input type="checkbox" onChange={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
       {task.description}
       <Components.StyledPropertiesDiv>
-        <Components.StyledEditTaskIcon onClick={() => editTask(idx, task.description)}/>
+        <Components.StyledEditTaskIcon onClick={() => setTaskList(editTask(idx, taskList, task.description))}/>
         <Components.StyledDeleteTaskIcon
-          onClick={() => window.confirm("Do you want to remove this task?") && deleteTask(idx)}/>
+          onClick={() => window.confirm("Do you want to remove this task?") && setTaskList(deleteTask(idx, taskList))}/>
       </Components.StyledPropertiesDiv>
     </Components.Task>
   ));
