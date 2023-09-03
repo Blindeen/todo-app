@@ -10,9 +10,8 @@ export const toggleIsDone = (idx: number, tasks:Task[]) => {
     },
     ...tasks.slice(idx+1),
   ];
-  updatedList.sort(compareTasks);
 
-  return updatedList;
+  return [...updatedList].sort(compareTasks);
 }
 
 export const deleteTask = (idx: number, tasks: Task[]) => {
