@@ -1,6 +1,7 @@
-import {compareTasks, TaskInterface} from "../../utils";
+import {Task} from "../../interfaces";
+import {compareTasks} from "../../utils";
 
-export const toggleIsDone = (idx: number, tasks:TaskInterface[]) => {
+export const toggleIsDone = (idx: number, tasks:Task[]) => {
   const updatedList = [
     ...tasks.slice(0, idx),
     {
@@ -14,14 +15,14 @@ export const toggleIsDone = (idx: number, tasks:TaskInterface[]) => {
   return updatedList;
 }
 
-export const deleteTask = (idx: number, tasks: TaskInterface[]) => {
+export const deleteTask = (idx: number, tasks: Task[]) => {
   const editedList = [...tasks];
   editedList.splice(idx, 1);
 
   return editedList;
 }
 
-export const editTask = (idx: number, tasks:TaskInterface[], text: string) => {
+export const editTask = (idx: number, tasks:Task[], text: string) => {
   const newText = window.prompt("Change description", text);
   if (newText) {
     return [

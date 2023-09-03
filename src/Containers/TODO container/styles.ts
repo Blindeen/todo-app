@@ -126,7 +126,7 @@ export const Task = styled("div")<TaskProps>`
   
   width: 100%;
   display: flex;
-  align-items: end;
+  align-items: center;
   border-bottom: solid 1px;
   animation: reveal 1s;
   

@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from "react";
 
 import * as S from "./styles";
+import {Task} from "../../interfaces";
 import {toggleIsDone, editTask, deleteTask} from "./functions";
-import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid} from "../../utils";
+import {setLocalStorage, getLocalStorage, isStringValid} from "../../utils";
 
 const TODOContainer = () => {
   const taskStorage = getLocalStorage("tasks");
   const taskArray = taskStorage ? JSON.parse(taskStorage) : null;
 
   const [inputValue, setInputValue] = useState("");
-  const [taskList, setTaskList] = useState<TaskInterface[]>(
+  const [taskList, setTaskList] = useState<Task[]>(
     taskArray ? taskArray : []
   );
 
@@ -24,7 +25,7 @@ const TODOContainer = () => {
       return;
     }
 
-    const newValue: TaskInterface = {
+    const newValue: Task = {
       description: trimmedValue,
       isDone: false,
     };
