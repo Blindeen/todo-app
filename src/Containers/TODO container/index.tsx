@@ -43,7 +43,12 @@ const TODOContainer = () => {
       <input type="checkbox" onChange={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
       {task.description}
       <S.StyledPropertiesDiv>
-        <S.StyledEditTaskIcon onClick={() => setTaskList(editTask(idx, taskList, task.description))}/>
+        <S.StyledEditTaskIcon onClick={() => {
+          const newText = window.prompt("Change description", task.description);
+          if (newText) {
+            setTaskList(editTask(idx, taskList, newText));
+          }
+        }}/>
         <S.StyledDeleteTaskIcon
           onClick={() => window.confirm("Do you want to remove this task?") && setTaskList(deleteTask(idx, taskList))}/>
       </S.StyledPropertiesDiv>
