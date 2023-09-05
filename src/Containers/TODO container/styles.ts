@@ -2,10 +2,7 @@ import styled from "styled-components";
 import {DeleteFilled, EditFilled} from "@ant-design/icons";
 
 import palette from "../../palette";
-
-interface TaskProps {
-  decoration: string;
-}
+import {TaskProps} from "../../interfaces";
 
 export const BackgroundContainer = styled("div")`
   height: 100vh;
@@ -17,7 +14,7 @@ export const BackgroundContainer = styled("div")`
   background-color: ${palette.hotelSoleiImlil};
 `;
 
-export const NotebookArea = styled("div")`
+export const NotebookContainer = styled("div")`
   height: 500px;
   width: 450px;
   display: flex;
@@ -25,7 +22,7 @@ export const NotebookArea = styled("div")`
   background-color: ${palette.freshwaterLemon};
 `;
 
-export const LeftAreaDiv = styled("div")`
+export const LeftContainer = styled("div")`
   height: 100%;
   width: 60px;
   display: flex;
@@ -36,7 +33,7 @@ export const LeftAreaDiv = styled("div")`
   border-right: double ${palette.red};
 `;
 
-export const RightAreaDiv = styled("div")`
+export const RightContainer = styled("div")`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -70,7 +67,7 @@ export const HeaderArea = styled("textarea")`
   font-family: Comic Sans MS, Comic Sans, cursive;
 `;
 
-export const InputDiv = styled("div")`
+export const InputContainer = styled("div")`
   width: 80%;
   display: flex;
   justify-content: space-evenly;
@@ -91,7 +88,7 @@ export const StyledInput = styled("input")`
   font-family: Comic Sans MS, Comic Sans, cursive;
 `;
 
-export const TaskListArea = styled("div")`
+export const TaskListContainer = styled("div")`
   height: 80%;
   width: 80%;
   
@@ -134,7 +131,7 @@ export const Task = styled("div")<TaskProps>`
   text-decoration: ${(props) => props.decoration};
 `;
 
-export const StyledDeleteIcon = styled(DeleteFilled)`
+export const DeleteIcon = styled(DeleteFilled)`
   font-size: 20px;
   
   transition: 0.3s;
@@ -144,17 +141,17 @@ export const StyledDeleteIcon = styled(DeleteFilled)`
   }
 `;
 
-export const StyledPropertiesDiv = styled("div")`
+export const PropertiesContainer = styled("div")`
   display: flex;
   flex: 1;
   justify-content: end;
   gap: 10px;
 `;
 
-export const StyledDeleteTaskIcon = styled(DeleteFilled)`
+export const DeleteTaskIcon = styled(DeleteFilled)`
   font-size: 20px;
 `;
 
-export const StyledEditTaskIcon = styled(EditFilled)`
+export const EditTaskIcon = styled(EditFilled)`
   font-size: 20px;
 `;

@@ -42,28 +42,28 @@ const TODOContainer = () => {
     >
       <input type="checkbox" onChange={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
       {task.description}
-      <S.StyledPropertiesDiv>
-        <S.StyledEditTaskIcon onClick={() => {
+      <S.PropertiesContainer>
+        <S.EditTaskIcon onClick={() => {
           const newText = window.prompt("Change description", task.description);
           if (newText) {
             setTaskList(editTask(idx, taskList, newText));
           }
         }}/>
-        <S.StyledDeleteTaskIcon
+        <S.DeleteTaskIcon
           onClick={() => window.confirm("Do you want to remove this task?") && setTaskList(deleteTask(idx, taskList))}/>
-      </S.StyledPropertiesDiv>
+      </S.PropertiesContainer>
     </S.Task>
   ));
 
   return (
     <S.BackgroundContainer>
-      <S.NotebookArea>
-        <S.LeftAreaDiv>
+      <S.NotebookContainer>
+        <S.LeftContainer>
           <S.Circle/>
           <S.Circle/>
           <S.Circle/>
-        </S.LeftAreaDiv>
-        <S.RightAreaDiv>
+        </S.LeftContainer>
+        <S.RightContainer>
           <S.HeaderArea
             title="header"
             rows={1}
@@ -73,10 +73,10 @@ const TODOContainer = () => {
             defaultValue={getLocalStorage("header")}
             spellCheck={false}
           />
-          <S.TaskListArea>
+          <S.TaskListContainer>
             {taskSet}
-          </S.TaskListArea>
-          <S.InputDiv>
+          </S.TaskListContainer>
+          <S.InputContainer>
             <form onSubmit={onSubmit}>
               <S.StyledInput
                 title="task-input"
@@ -86,12 +86,12 @@ const TODOContainer = () => {
                 spellCheck={false}
               />
             </form>
-            <S.StyledDeleteIcon
+            <S.DeleteIcon
               onClick={() => window.confirm("Are you sure you want to clear this list?") && setTaskList([])}
             />
-          </S.InputDiv>
-        </S.RightAreaDiv>
-      </S.NotebookArea>
+          </S.InputContainer>
+        </S.RightContainer>
+      </S.NotebookContainer>
     </S.BackgroundContainer>
   );
 };
