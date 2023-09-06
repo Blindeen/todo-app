@@ -1,22 +1,16 @@
 import React, {useEffect, useState} from "react";
 
-import {
-  BackgroundContainer,
-  LeftAreaDiv,
-  NotebookArea,
-  RightAreaDiv,
-  Circle,
-  HeaderArea,
-  StyledInput, TaskListArea, Task, InputDiv, StyledDeleteIcon
-} from "./styles";
-import {TaskInterface, setLocalStorage, getLocalStorage, isStringValid, compareTasks} from "../../utils";
+import * as S from "./styles";
+import {Task} from "../../interfaces";
+import {toggleIsDone, editTask, deleteTask} from "./functions";
+import {setLocalStorage, getLocalStorage, isStringValid} from "../../utils";
 
 const TODOContainer = () => {
   const taskStorage = getLocalStorage("tasks");
   const taskArray = taskStorage ? JSON.parse(taskStorage) : null;
 
   const [inputValue, setInputValue] = useState("");
-  const [taskList, setTaskList] = useState<TaskInterface[]>(
+  const [taskList, setTaskList] = useState<Task[]>(
     taskArray ? taskArray : []
   );
 
@@ -31,7 +25,7 @@ const TODOContainer = () => {
       return;
     }
 
-    const newValue: TaskInterface = {
+    const newValue: Task = {
       description: trimmedValue,
       isDone: false,
     };
@@ -41,35 +35,36 @@ const TODOContainer = () => {
     e.currentTarget.reset();
   }
 
-  const toggleIsDone = (idx: number) => {
-    const updatedList = [...taskList];
-
-    updatedList[idx].isDone = !updatedList[idx].isDone;
-    updatedList.sort(compareTasks);
-
-    setTaskList(updatedList);
-  }
-
   const taskSet = taskList.map((task, idx) => (
-    <Task
+    <S.Task
       key={idx}
       decoration={task.isDone ? "line-through" : "none"}
     >
-      <input type="checkbox" onChange={toggleIsDone.bind(null, idx)} checked={task.isDone}/>
+      <input type="checkbox" onChange={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
       {task.description}
-    </Task>
+      <S.PropertiesContainer>
+        <S.EditTaskIcon onClick={() => {
+          const newText = window.prompt("Change description", task.description);
+          if (newText) {
+            setTaskList(editTask(idx, taskList, newText));
+          }
+        }}/>
+        <S.DeleteTaskIcon
+          onClick={() => window.confirm("Do you want to remove this task?") && setTaskList(deleteTask(idx, taskList))}/>
+      </S.PropertiesContainer>
+    </S.Task>
   ));
 
   return (
-    <BackgroundContainer>
-      <NotebookArea>
-        <LeftAreaDiv>
-          <Circle/>
-          <Circle/>
-          <Circle/>
-        </LeftAreaDiv>
-        <RightAreaDiv>
-          <HeaderArea
+    <S.BackgroundContainer>
+      <S.NotebookContainer>
+        <S.LeftContainer>
+          <S.Circle/>
+          <S.Circle/>
+          <S.Circle/>
+        </S.LeftContainer>
+        <S.RightContainer>
+          <S.HeaderArea
             title="header"
             rows={1}
             maxLength={20}
@@ -78,12 +73,12 @@ const TODOContainer = () => {
             defaultValue={getLocalStorage("header")}
             spellCheck={false}
           />
-          <TaskListArea>
+          <S.TaskListContainer>
             {taskSet}
-          </TaskListArea>
-          <InputDiv>
+          </S.TaskListContainer>
+          <S.InputContainer>
             <form onSubmit={onSubmit}>
-              <StyledInput
+              <S.StyledInput
                 title="task-input"
                 type="text"
                 placeholder="Enter task"
@@ -91,13 +86,13 @@ const TODOContainer = () => {
                 spellCheck={false}
               />
             </form>
-            <StyledDeleteIcon
-                onClick={() => window.confirm("Are you sure you want to clear this list?") && setTaskList([])}
+            <S.DeleteIcon
+              onClick={() => window.confirm("Are you sure you want to clear this list?") && setTaskList([])}
             />
-          </InputDiv>
-        </RightAreaDiv>
-      </NotebookArea>
-    </BackgroundContainer>
+          </S.InputContainer>
+        </S.RightContainer>
+      </S.NotebookContainer>
+    </S.BackgroundContainer>
   );
 };
 
