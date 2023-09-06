@@ -4,6 +4,7 @@ import * as S from "./styles";
 import {Task} from "../../interfaces";
 import {toggleIsDone, editTask, deleteTask} from "./functions";
 import {setLocalStorage, getLocalStorage, isStringValid} from "../../utils";
+import Checkbox from "../../Components/Checkbox";
 
 const TODOContainer = () => {
   const taskStorage = getLocalStorage("tasks");
@@ -40,7 +41,7 @@ const TODOContainer = () => {
       key={idx}
       decoration={task.isDone ? "line-through" : "none"}
     >
-      <input type="checkbox" onChange={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
+      <Checkbox onClick={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
       {task.description}
       <S.PropertiesContainer>
         <S.EditTaskIcon onClick={() => {
