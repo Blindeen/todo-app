@@ -126,6 +126,7 @@ export const Task = styled("div")<TaskProps>`
   align-items: center;
   border-bottom: solid 1px;
   animation: reveal 1s;
+  gap: 5px;
   
   overflow-wrap: anywhere;
   text-decoration: ${(props) => props.decoration};
