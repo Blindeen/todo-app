@@ -53,7 +53,7 @@ const TODOContainer = () => {
     >
       <Checkbox onClick={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
       {task.description}
-      <S.PropertiesContainer>
+      <S.PropertiesContainer className="properties-container">
         <S.EditTaskIcon onClick={() => {
           const newText = window.prompt("Change description", task.description);
           if (newText) {
@@ -84,7 +84,7 @@ const TODOContainer = () => {
             defaultValue={getLocalStorage("header")}
             spellCheck={false}
           />
-          <S.TaskListContainer id={"task-list"}>
+          <S.TaskListContainer id="task-list">
             {taskSet}
           </S.TaskListContainer>
           <S.InputContainer>
