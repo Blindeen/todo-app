@@ -113,11 +113,9 @@ export const Task = styled("div")<TaskProps>`
   @keyframes reveal {
     from {
       opacity: 0;
-      transform: translateY(20px);
     }
     to {
       opacity: 1;
-      transform: none;
     }
   }
   
