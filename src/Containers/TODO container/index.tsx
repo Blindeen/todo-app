@@ -14,18 +14,22 @@ const TODOContainer = () => {
   const [taskList, setTaskList] = useState<Task[]>(
     taskArray ? taskArray : []
   );
+  const [additionFlag, setAdditionFlag] = useState(false);
 
   useEffect(() => setLocalStorage("tasks", JSON.stringify(taskList)), [taskList]);
 
   useEffect(() => {
-    const taskListContainer = document.getElementById("task-list");
-    taskListContainer?.scroll(
-      {
-        top: taskListContainer.scrollHeight,
-        behavior: "smooth",
-      }
-    )
-  }, [taskList.length]);
+    if (additionFlag) {
+      const taskListContainer = document.getElementById("task-list");
+      taskListContainer?.scroll(
+        {
+          top: taskListContainer.scrollHeight,
+          behavior: "smooth",
+        }
+      )
+      setAdditionFlag(false);
+    }
+  }, [additionFlag]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,6 +48,8 @@ const TODOContainer = () => {
 
     setInputValue("");
     e.currentTarget.reset();
+
+    setAdditionFlag(true);
   }
 
   const taskSet = taskList.map((task, idx) => (
