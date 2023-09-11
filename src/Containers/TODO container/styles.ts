@@ -91,6 +91,9 @@ export const StyledInput = styled("input")`
 export const TaskListContainer = styled("div")`
   height: 80%;
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
   
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -113,11 +116,9 @@ export const Task = styled("div")<TaskProps>`
   @keyframes reveal {
     from {
       opacity: 0;
-      transform: translateY(20px);
     }
     to {
       opacity: 1;
-      transform: none;
     }
   }
   
@@ -126,9 +127,19 @@ export const Task = styled("div")<TaskProps>`
   align-items: center;
   border-bottom: solid 1px;
   animation: reveal 1s;
+  column-gap: 5px;
   
   overflow-wrap: anywhere;
   text-decoration: ${(props) => props.decoration};
+  
+  .properties-container {
+    visibility: hidden;
+  }
+  
+  &:hover .properties-container {
+    visibility: visible;
+    animation: reveal 1s;
+  }
 `;
 
 export const DeleteIcon = styled(DeleteFilled)`
@@ -145,7 +156,7 @@ export const PropertiesContainer = styled("div")`
   display: flex;
   flex: 1;
   justify-content: end;
-  gap: 10px;
+  column-gap: 10px;
 `;
 
 export const DeleteTaskIcon = styled(DeleteFilled)`

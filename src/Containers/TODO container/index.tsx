@@ -4,6 +4,7 @@ import * as S from "./styles";
 import {Task} from "../../interfaces";
 import {toggleIsDone, editTask, deleteTask} from "./functions";
 import {setLocalStorage, getLocalStorage, isStringValid} from "../../utils";
+import Checkbox from "../../Components/Checkbox";
 
 const TODOContainer = () => {
   const taskStorage = getLocalStorage("tasks");
@@ -13,8 +14,22 @@ const TODOContainer = () => {
   const [taskList, setTaskList] = useState<Task[]>(
     taskArray ? taskArray : []
   );
+  const [additionFlag, setAdditionFlag] = useState(false);
 
   useEffect(() => setLocalStorage("tasks", JSON.stringify(taskList)), [taskList]);
+
+  useEffect(() => {
+    if (additionFlag) {
+      const taskListContainer = document.getElementById("task-list");
+      taskListContainer?.scroll(
+        {
+          top: taskListContainer.scrollHeight,
+          behavior: "smooth",
+        }
+      )
+      setAdditionFlag(false);
+    }
+  }, [additionFlag]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,6 +48,8 @@ const TODOContainer = () => {
 
     setInputValue("");
     e.currentTarget.reset();
+
+    setAdditionFlag(true);
   }
 
   const taskSet = taskList.map((task, idx) => (
@@ -40,9 +57,9 @@ const TODOContainer = () => {
       key={idx}
       decoration={task.isDone ? "line-through" : "none"}
     >
-      <input type="checkbox" onChange={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
+      <Checkbox onClick={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone}/>
       {task.description}
-      <S.PropertiesContainer>
+      <S.PropertiesContainer className="properties-container">
         <S.EditTaskIcon onClick={() => {
           const newText = window.prompt("Change description", task.description);
           if (newText) {
@@ -73,7 +90,7 @@ const TODOContainer = () => {
             defaultValue={getLocalStorage("header")}
             spellCheck={false}
           />
-          <S.TaskListContainer>
+          <S.TaskListContainer id="task-list">
             {taskSet}
           </S.TaskListContainer>
           <S.InputContainer>
@@ -82,7 +99,7 @@ const TODOContainer = () => {
                 title="task-input"
                 type="text"
                 placeholder="Enter task"
-                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
                 spellCheck={false}
               />
             </form>

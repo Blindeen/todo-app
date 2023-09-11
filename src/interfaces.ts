@@ -6,3 +6,8 @@ export interface Task {
 export interface TaskProps {
   decoration: string;
 }
+
+export interface CheckboxProps {
+  onClick: () => void;
+  checked: boolean;
+}
