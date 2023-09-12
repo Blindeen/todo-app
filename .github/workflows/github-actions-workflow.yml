@@ -1,0 +1,49 @@
+name: Deploy on push to main
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🔔
+        uses: actions/checkout@v3
+
+      - name: Setup Node 🪢
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+
+      - name: Install dependencies 💾
+        run: npm install
+
+      - name: Build 👷
+        run: npm run build
+
+      - name: Create artifacts 🖼️
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./build
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    needs: build
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy 🚀
+        id: deployment
+        uses: actions/deploy-pages@v1
