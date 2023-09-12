@@ -1,5 +1,6 @@
 {
   "name": "todo-app",
+  "homepage": "https://blindeen.github.io/todo-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
