@@ -99,7 +99,7 @@ const TODOContainer = () => {
                 title="task-input"
                 type="text"
                 placeholder="Enter task"
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value)}
+                onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)}
                 spellCheck={false}
               />
             </form>
