@@ -4,7 +4,7 @@ export interface Task {
 }
 
 export interface TaskProps {
-  decoration: string;
+  decoration: "line-through" | "none";
 }
 
 export interface CheckboxProps {
