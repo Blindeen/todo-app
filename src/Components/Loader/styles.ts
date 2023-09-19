@@ -1,20 +1,20 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import palette from "../../palette";
+import palette from '../../palette';
 
-export const StyledBackground = styled("div")`
+export const StyledBackground = styled('div')`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 999;
   position: fixed;
 `;
 
-export const StyledLoader = styled("span")`
+export const StyledLoader = styled('span')`
   @keyframes spin {
     from {
       transform: rotate(0);
