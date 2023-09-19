@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { CheckCircleFilled } from '@ant-design/icons';
 
-import palette from '../../palette';
+import palette from 'palette';
 
 export const UncheckedIcon = styled('div')`
   min-height: 19px;

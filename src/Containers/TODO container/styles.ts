@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 
-import palette from '../../palette';
-import { TaskProps } from '../../interfaces';
+import palette from 'palette';
+import { TaskProps } from 'interfaces';
 
 export const BackgroundContainer = styled('div')`
   height: 100vh;
