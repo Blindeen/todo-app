@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
-import TODOPage from './Pages/TODO page';
-import LoginPage from './Pages/Login page';
+import TODOPage from 'Pages/TODO page';
+import LoginPage from 'Pages/Login page';
 
 import { routes } from './routes';
 

@@ -1,4 +1,4 @@
-import TODOContainer from '../../Containers/TODO container';
+import TODOContainer from 'Containers/TODO container';
 
 const TODOPage = () => {
   return <TODOContainer />;

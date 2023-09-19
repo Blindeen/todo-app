@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 import * as S from './styles';
-import { Task } from '../../interfaces';
 import { toggleIsDone, editTask, deleteTask } from './functions';
-import { setLocalStorage, getLocalStorage, isStringValid } from '../../utils';
-import Checkbox from '../../Components/Checkbox';
+
+import Checkbox from 'Components/Checkbox';
+
+import { Task } from 'interfaces';
+import { setLocalStorage, getLocalStorage, isStringValid } from 'utils';
 
 const TODOContainer = () => {
   const taskStorage = getLocalStorage('tasks');

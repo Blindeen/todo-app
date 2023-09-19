@@ -1,5 +1,5 @@
 import { StyledBackground, StyledLoader } from './styles';
-import { LoaderProps } from '../../interfaces';
+import { LoaderProps } from 'interfaces';
 
 const Loader = ({ loading }: LoaderProps) => {
   return (

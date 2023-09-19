@@ -1,5 +1,5 @@
-import { Task } from '../../interfaces';
-import { compareTasks } from '../../utils';
+import { Task } from 'interfaces';
+import { compareTasks } from 'utils';
 
 export const toggleIsDone = (idx: number, tasks: Task[]) => {
   const updatedList = [

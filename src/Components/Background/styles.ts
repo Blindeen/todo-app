@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import palette from '../../palette';
+
+import palette from 'palette';
 
 export const BackgroundContainer = styled('div')`
   height: 100vh;

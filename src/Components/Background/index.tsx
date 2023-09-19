@@ -1,5 +1,5 @@
 import { BackgroundContainer, NotebookContainer } from './styles';
-import { BackgroundProps } from '../../interfaces';
+import { BackgroundProps } from 'interfaces';
 
 const Background = ({ children }: BackgroundProps) => {
   return (

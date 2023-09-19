@@ -1,4 +1,4 @@
-import { CheckboxProps } from '../../interfaces';
+import { CheckboxProps } from 'interfaces';
 import { UncheckedIcon, CheckedIcon } from './styles';
 
 const Checkbox = ({ onClick, checked }: CheckboxProps) => {
