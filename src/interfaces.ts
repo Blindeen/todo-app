@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export interface Task {
   description: string;
@@ -6,7 +6,7 @@ export interface Task {
 }
 
 export interface TaskProps {
-  decoration: "line-through" | "none";
+  decoration: 'line-through' | 'none';
 }
 
 export interface CheckboxProps {

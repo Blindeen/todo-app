@@ -52,7 +52,7 @@ const TODOContainer = () => {
     <S.Task key={idx} decoration={task.isDone ? 'line-through' : 'none'}>
       <Checkbox onClick={() => setTaskList(toggleIsDone(idx, taskList))} checked={task.isDone} />
       {task.description}
-      <S.PropertiesContainer className="properties-container">
+      <S.PropertiesContainer className='properties-container'>
         <S.EditTaskIcon
           onClick={() => {
             const newText = window.prompt('Change description', task.description);
@@ -78,7 +78,7 @@ const TODOContainer = () => {
         </S.LeftContainer>
         <S.RightContainer>
           <S.HeaderArea
-            title="header"
+            title='header'
             rows={1}
             maxLength={20}
             onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setLocalStorage('header', e.target.value)}
@@ -86,13 +86,13 @@ const TODOContainer = () => {
             defaultValue={getLocalStorage('header')}
             spellCheck={false}
           />
-          <S.TaskListContainer id="task-list">{taskSet}</S.TaskListContainer>
+          <S.TaskListContainer id='task-list'>{taskSet}</S.TaskListContainer>
           <S.InputContainer>
             <form onSubmit={onSubmit}>
               <S.StyledInput
-                title="task-input"
-                type="text"
-                placeholder="Enter task"
+                title='task-input'
+                type='text'
+                placeholder='Enter task'
                 onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => setInputValue(e.currentTarget.value)}
                 spellCheck={false}
               />
