@@ -1,10 +1,15 @@
 import {StyledBackground, StyledLoader} from "./styles";
+import {LoaderProps} from "../../interfaces";
 
-const Loader = () => {
+const Loader = ({loading}: LoaderProps) => {
   return (
-    <StyledBackground>
-      <StyledLoader/>
-    </StyledBackground>
+    <>
+      {
+        loading && <StyledBackground>
+              <StyledLoader/>
+          </StyledBackground>
+      }
+    </>
   );
 }
 

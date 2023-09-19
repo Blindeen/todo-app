@@ -1,6 +1,8 @@
+import React from "react";
+
 export interface Task {
-  description: string,
-  isDone: boolean,
+  description: string;
+  isDone: boolean;
 }
 
 export interface TaskProps {
@@ -10,4 +12,17 @@ export interface TaskProps {
 export interface CheckboxProps {
   onClick: () => void;
   checked: boolean;
+}
+
+export interface BackgroundProps {
+  children: React.ReactNode;
+}
+
+export interface LoginPayload {
+  email: string;
+  password: string;
+}
+
+export interface LoaderProps {
+  loading: boolean;
 }
