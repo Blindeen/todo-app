@@ -1,39 +1,39 @@
-import styled from "styled-components";
-import {DeleteFilled, EditFilled} from "@ant-design/icons";
+import styled from 'styled-components';
+import { DeleteFilled, EditFilled } from '@ant-design/icons';
 
-import palette from "../../palette";
-import {TaskProps} from "../../interfaces";
+import palette from 'palette';
+import { TaskProps } from 'interfaces';
 
-export const BackgroundContainer = styled("div")`
+export const BackgroundContainer = styled('div')`
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   background-color: ${palette.hotelSoleiImlil};
 `;
 
-export const NotebookContainer = styled("div")`
+export const NotebookContainer = styled('div')`
   height: 500px;
   width: 450px;
   display: flex;
-  
+
   background-color: ${palette.freshwaterLemon};
 `;
 
-export const LeftContainer = styled("div")`
+export const LeftContainer = styled('div')`
   height: 100%;
   width: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  
+
   border-right: double ${palette.red};
 `;
 
-export const RightContainer = styled("div")`
+export const RightContainer = styled('div')`
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ export const RightContainer = styled("div")`
   flex: 1;
 `;
 
-export const Circle = styled("span")`
+export const Circle = styled('span')`
   height: 25px;
   width: 25px;
   display: inline-block;
@@ -51,7 +51,7 @@ export const Circle = styled("span")`
   border-radius: 50%;
 `;
 
-export const HeaderArea = styled("textarea")`
+export const HeaderArea = styled('textarea')`
   height: fit-content;
   width: fit-content;
   resize: none;
@@ -60,21 +60,24 @@ export const HeaderArea = styled("textarea")`
   border-bottom: solid 1px;
   outline: none;
   overflow-y: hidden;
-  
+
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family:
+    Comic Sans MS,
+    Comic Sans,
+    cursive;
 `;
 
-export const InputContainer = styled("div")`
+export const InputContainer = styled('div')`
   width: 80%;
   display: flex;
   justify-content: space-evenly;
   align-items: end;
 `;
 
-export const StyledInput = styled("input")`
+export const StyledInput = styled('input')`
   height: fit-content;
   width: fit-content;
   resize: none;
@@ -85,21 +88,24 @@ export const StyledInput = styled("input")`
 
   text-align: center;
   font-size: 16px;
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family:
+    Comic Sans MS,
+    Comic Sans,
+    cursive;
 `;
 
-export const TaskListContainer = styled("div")`
+export const TaskListContainer = styled('div')`
   height: 80%;
   width: 80%;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
-  
+
   overflow-y: auto;
   &::-webkit-scrollbar {
     width: 7px;
   }
-  
+
   &::-webkit-scrollbar-track {
     background: none;
   }
@@ -109,10 +115,13 @@ export const TaskListContainer = styled("div")`
     border-radius: 20px;
   }
 
-  font-family: Comic Sans MS, Comic Sans, cursive;
+  font-family:
+    Comic Sans MS,
+    Comic Sans,
+    cursive;
 `;
 
-export const Task = styled("div")<TaskProps>`
+export const Task = styled('div')<TaskProps>`
   @keyframes reveal {
     from {
       opacity: 0;
@@ -121,21 +130,21 @@ export const Task = styled("div")<TaskProps>`
       opacity: 1;
     }
   }
-  
+
   width: 100%;
   display: flex;
   align-items: center;
   border-bottom: solid 1px;
   animation: reveal 1s;
   column-gap: 5px;
-  
+
   overflow-wrap: anywhere;
   text-decoration: ${(props) => props.decoration};
-  
+
   .properties-container {
     visibility: hidden;
   }
-  
+
   &:hover .properties-container {
     visibility: visible;
     animation: reveal 1s;
@@ -144,7 +153,7 @@ export const Task = styled("div")<TaskProps>`
 
 export const DeleteIcon = styled(DeleteFilled)`
   font-size: 20px;
-  
+
   transition: 0.3s;
   &:hover {
     color: ${palette.red};
@@ -152,7 +161,7 @@ export const DeleteIcon = styled(DeleteFilled)`
   }
 `;
 
-export const PropertiesContainer = styled("div")`
+export const PropertiesContainer = styled('div')`
   display: flex;
   flex: 1;
   justify-content: end;

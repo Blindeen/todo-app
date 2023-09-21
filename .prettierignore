@@ -1,0 +1,10 @@
+# Folders:
+node_modules
+public
+.github
+
+# Files:
+.gitignore
+.prettierignore
+*.json
+README.md
