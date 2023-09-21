@@ -1,14 +1,15 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { StyledForm } from './styles';
 import { login } from './login';
 
 import Background from 'Components/Background';
 import Loader from 'Components/Loader';
+import { StyledForm } from 'Components/Form/styles';
 import { StyledButton } from 'Components/Button/styles';
 import { StyledHeader } from 'Components/Header/styles';
 import { StyledInput } from 'Components/Input/styles';
+import { StyledLink } from 'Components/Link/styles';
 
 import pushNotification from 'pushNotification';
 import { LoginPayload } from 'interfaces';
@@ -34,7 +35,7 @@ const LoginContainer = () => {
       if (response.ok) {
         const { token } = responseBody;
         setLocalStorage('token', token);
-        pushNotification('success', 'Signed up', 'Signed up successfully');
+        pushNotification('success', 'Signed in', 'Signed in successfully');
         navigate(routes.todo);
       } else {
         const { errors } = responseBody;
@@ -72,7 +73,7 @@ const LoginContainer = () => {
         />
         <StyledButton type='submit'>Sign in</StyledButton>
       </StyledForm>
-      <span>Don't have an account? Register</span>
+      <span>Don't have an account? <StyledLink onClick={() => navigate(routes.register)}>Register</StyledLink></span>
     </Background>
   );
 };
