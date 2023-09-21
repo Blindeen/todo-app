@@ -23,6 +23,10 @@ export interface LoginPayload {
   password: string;
 }
 
+export interface RegisterPayload extends LoginPayload {
+  name: string;
+}
+
 export interface LoaderProps {
   loading: boolean;
 }
