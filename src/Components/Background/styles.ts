@@ -23,7 +23,11 @@ export const NotebookContainer = styled('div')`
 
   background-color: ${palette.freshwaterLemon};
   font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
 `;

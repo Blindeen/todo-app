@@ -11,9 +11,15 @@ export const StyledInput = styled('input')`
   background: ${palette.freshwaterLemon} !important;
 
   font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
+  font-weight: bold;
+  font-size: 15px;
 
   &:focus {
     outline: none;

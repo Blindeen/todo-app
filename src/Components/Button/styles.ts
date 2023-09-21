@@ -8,9 +8,13 @@ export const StyledButton = styled('button')`
   padding: 5px 10px;
 
   font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+    ui-monospace,
+    SFMono-Regular,
+    SF Mono,
+    Menlo,
+    Consolas,
+    Liberation Mono,
+    monospace;
 
   background-color: ${palette.hotelSoleiImlil};
   color: ${palette.white};
