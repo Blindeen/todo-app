@@ -33,8 +33,8 @@ const LoginContainer = () => {
 
       if (response.ok) {
         const { token } = responseBody;
-        pushNotification('success', 'Signed up', 'Signed up successfully');
         setLocalStorage('token', token);
+        pushNotification('success', 'Signed up', 'Signed up successfully');
         navigate(routes.todo);
       } else {
         const { errors } = responseBody;
