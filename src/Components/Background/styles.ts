@@ -22,12 +22,5 @@ export const NotebookContainer = styled('div')`
   gap: 30px;
 
   background-color: ${palette.freshwaterLemon};
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    SF Mono,
-    Menlo,
-    Consolas,
-    Liberation Mono,
-    monospace;
+  font-family: Consolas, monospace;
 `;

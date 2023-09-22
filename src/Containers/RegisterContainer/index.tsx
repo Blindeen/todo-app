@@ -36,7 +36,7 @@ const RegisterContainer = () => {
       if (response.ok) {
         const { token } = responseBody;
         setLocalStorage('token', token);
-        pushNotification('success', 'Signed up', 'Signed in successfully');
+        pushNotification('success', 'Signed up', 'Signed up successfully');
         navigate(routes.todo);
       } else {
         const { errors } = responseBody;

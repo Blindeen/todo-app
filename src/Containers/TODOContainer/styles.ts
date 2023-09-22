@@ -64,10 +64,7 @@ export const HeaderArea = styled('textarea')`
   text-align: center;
   font-size: 20px;
   font-weight: bold;
-  font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+  font-family: Consolas, monospace;
 `;
 
 export const InputContainer = styled('div')`
@@ -88,10 +85,7 @@ export const StyledInput = styled('input')`
 
   text-align: center;
   font-size: 16px;
-  font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+  font-family: Consolas, monospace;
 `;
 
 export const TaskListContainer = styled('div')`
@@ -115,10 +109,7 @@ export const TaskListContainer = styled('div')`
     border-radius: 20px;
   }
 
-  font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+  font-family: Consolas, monospace;
 `;
 
 export const Task = styled('div')<TaskProps>`

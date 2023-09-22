@@ -7,14 +7,7 @@ export const StyledButton = styled('button')`
   border-radius: 20px;
   padding: 5px 10px;
 
-  font-family:
-    ui-monospace,
-    SFMono-Regular,
-    SF Mono,
-    Menlo,
-    Consolas,
-    Liberation Mono,
-    monospace;
+  font-family: Consolas, monospace;
 
   background-color: ${palette.hotelSoleiImlil};
   color: ${palette.white};
