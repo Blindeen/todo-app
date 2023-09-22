@@ -13,7 +13,7 @@ const pushNotification = (type: NotificationType, title: string, description: st
     style: {
       backgroundColor: palette.freshwaterLemon,
       borderRadius: '0',
-      fontFamily: 'Comic Sans MS, Comic Sans, cursive',
+      fontFamily: 'Consolas, monospace',
     },
   });
 };
