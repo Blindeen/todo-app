@@ -22,8 +22,5 @@ export const NotebookContainer = styled('div')`
   gap: 30px;
 
   background-color: ${palette.freshwaterLemon};
-  font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+  font-family: Consolas, monospace;
 `;

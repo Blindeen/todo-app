@@ -1,14 +1,15 @@
 import React, { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { StyledForm } from './styles';
 import { login } from './login';
 
 import Background from 'Components/Background';
 import Loader from 'Components/Loader';
+import Input from 'Components/Input';
+import { StyledForm } from 'Components/Form/styles';
 import { StyledButton } from 'Components/Button/styles';
 import { StyledHeader } from 'Components/Header/styles';
-import { StyledInput } from 'Components/Input/styles';
+import { StyledLink } from 'Components/Link/styles';
 
 import pushNotification from 'pushNotification';
 import { LoginPayload } from 'interfaces';
@@ -34,8 +35,8 @@ const LoginContainer = () => {
       if (response.ok) {
         const { token } = responseBody;
         setLocalStorage('token', token);
-        pushNotification('success', 'Signed up', 'Signed up successfully');
-        navigate(routes.todo);
+        pushNotification('success', 'Signed in', 'Signed in successfully', 2);
+        setTimeout(() => navigate(routes.todo), 2000);
       } else {
         const { errors } = responseBody;
         Object.entries(errors).forEach(([key, value]) => {
@@ -53,26 +54,26 @@ const LoginContainer = () => {
     <Background>
       <Loader loading={loading} />
       <StyledHeader>Sign in</StyledHeader>
-      <StyledForm onSubmit={onSubmit} autoComplete='on'>
-        <StyledInput
-          type='email'
-          name='email'
-          placeholder='Email'
+      <StyledForm onSubmit={onSubmit} autoComplete="on">
+        <Input
+          type="email"
+          name="email"
+          placeholder="Email"
           maxLength={128}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-          required={true}
         />
-        <StyledInput
-          type='password'
-          name='password'
-          placeholder='Password'
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
           maxLength={1024}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-          required={true}
         />
-        <StyledButton type='submit'>Sign in</StyledButton>
+        <StyledButton type="submit">Sign in</StyledButton>
       </StyledForm>
-      <span>Don't have an account? Register</span>
+      <span>
+        Don't have an account? <StyledLink onClick={() => navigate(routes.register)}>Register</StyledLink>
+      </span>
     </Background>
   );
 };

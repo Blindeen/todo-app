@@ -4,8 +4,15 @@ export const StyledInput = styled('input')`
   width: 100%;
   height: 30px;
 
-  font-family:
-    Comic Sans MS,
-    Comic Sans,
-    cursive;
+  border: none;
+  border-bottom: 2px solid;
+  background: none;
+
+  font-family: Consolas, monospace;
+  font-weight: bold;
+  font-size: 15px;
+
+  &:focus {
+    outline: none;
+  }
 `;
