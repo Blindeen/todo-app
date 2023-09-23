@@ -5,11 +5,11 @@ import { login } from './login';
 
 import Background from 'Components/Background';
 import Loader from 'Components/Loader';
+import Input from 'Components/Input';
 import { StyledForm } from 'Components/Form/styles';
 import { StyledButton } from 'Components/Button/styles';
 import { StyledHeader } from 'Components/Header/styles';
 import { StyledLink } from 'Components/Link/styles';
-import Input from 'Components/Input';
 
 import pushNotification from 'pushNotification';
 import { LoginPayload } from 'interfaces';
@@ -35,8 +35,8 @@ const LoginContainer = () => {
       if (response.ok) {
         const { token } = responseBody;
         setLocalStorage('token', token);
-        pushNotification('success', 'Signed in', 'Signed in successfully');
-        navigate(routes.todo);
+        pushNotification('success', 'Signed in', 'Signed in successfully', 2);
+        setTimeout(() => navigate(routes.todo), 2000);
       } else {
         const { errors } = responseBody;
         Object.entries(errors).forEach(([key, value]) => {
