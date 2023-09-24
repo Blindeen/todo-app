@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { login } from './login';
@@ -13,8 +13,8 @@ import { StyledLink } from 'Components/Link/styles';
 
 import pushNotification from 'pushNotification';
 import { LoginPayload } from 'interfaces';
-import { setLocalStorage } from 'utils';
 import { routes } from 'routes';
+import { Context } from 'Context/context';
 
 const LoginContainer = () => {
   const [email, setEmail] = useState('');
@@ -22,6 +22,7 @@ const LoginContainer = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const { dispatch } = useContext(Context);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,8 +34,18 @@ const LoginContainer = () => {
       const responseBody = await response.json();
 
       if (response.ok) {
-        const { token } = responseBody;
-        setLocalStorage('token', token);
+        const { token, name, email } = responseBody;
+        dispatch({
+          type: 'signIn',
+          payload: {
+            user: {
+              name: name,
+              email: email,
+            },
+            token: token,
+          },
+        });
+
         pushNotification('success', 'Signed in', 'Signed in successfully', 2);
         setTimeout(() => navigate(routes.todo), 2000);
       } else {
@@ -44,7 +55,7 @@ const LoginContainer = () => {
         });
       }
     } catch {
-      pushNotification('error', 'Server\'s error', 'Server is down');
+      pushNotification('error', "Server's error", 'Server is down');
     } finally {
       setLoading(false);
     }

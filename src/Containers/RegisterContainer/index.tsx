@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { register } from 'Containers/RegisterContainer/register';
@@ -13,8 +13,8 @@ import { StyledLink } from 'Components/Link/styles';
 
 import { routes } from 'routes';
 import { RegisterPayload } from 'interfaces';
-import { setLocalStorage } from 'utils';
 import pushNotification from 'pushNotification';
+import { Context } from 'Context/context';
 
 const RegisterContainer = () => {
   const [name, setName] = useState('');
@@ -23,6 +23,7 @@ const RegisterContainer = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+  const { dispatch } = useContext(Context);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,8 +35,18 @@ const RegisterContainer = () => {
       const responseBody = await response.json();
 
       if (response.ok) {
-        const { token } = responseBody;
-        setLocalStorage('token', token);
+        const { token, name, email } = responseBody;
+        dispatch({
+          type: 'signIn',
+          payload: {
+            user: {
+              name,
+              email,
+            },
+            token: token,
+          },
+        });
+
         pushNotification('success', 'Signed up', 'Signed up successfully', 2);
         setTimeout(() => navigate(routes.todo), 2000);
       } else {
