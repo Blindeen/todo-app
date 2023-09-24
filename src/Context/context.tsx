@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 
 import { Reducer } from 'Context/reducer';
+import { ContextAction } from 'Context/reducer';
 
 export type User = {
   name: string;
@@ -12,6 +13,11 @@ export type StateType = {
   user: User;
 };
 
+type ContextType = {
+  state: StateType;
+  dispatch: React.Dispatch<ContextAction>;
+};
+
 const initialState: StateType = {
   isLogged: false,
   user: {
@@ -20,10 +26,7 @@ const initialState: StateType = {
   },
 };
 
-export const Context = createContext<{
-  state: StateType;
-  dispatch: React.Dispatch<any>;
-}>({
+export const Context = createContext<ContextType>({
   state: initialState,
   dispatch: () => null,
 });
