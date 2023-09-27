@@ -17,7 +17,7 @@ export const Reducer = (state: StateType, action: ContextAction) => {
 
   switch (type) {
     case 'signIn':
-      setLocalStorage('token', token);
+      setLocalStorage('token', `Bearer ${token}`);
       return { ...state, isLogged: true, user: user };
     case 'signOut':
       clearLocalStorage();
